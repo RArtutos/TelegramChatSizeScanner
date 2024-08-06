@@ -17,12 +17,14 @@ TelegramChatSizeScanner es un bot de Telegram desarrollado en Python que escanea
 3. Instala dependencias
    pip install -r requirements.txt
 
-4. Edita el archivo config.py
+4. Edita el archivo `config.py` para que contenga la siguiente configuración:
+
+   ```python
    api_id = 'YOUR_API_ID'
    api_hash = 'YOUR_API_HASH'
    phone_number = 'YOUR_PHONE_NUMBER'
-   chat_id =   # Reemplaza con tu chat_id
-   request_delay = .02  # Retraso entre peticiones en segundos
+   chat_id =  # Reemplaza con tu chat_id
+   request_delay = 0.02  # Retraso entre peticiones en segundos
 
 ## Uso
    Ejecuta el archivo main.py con el comando python main.py
