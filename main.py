@@ -19,23 +19,20 @@ def format_size(size_bytes):
     elif size_bytes < 1024 * 1024 * 1024 * 1024:
         return f"{size_bytes / (1024 * 1024 * 1024):.2f} GB"
     elif size_bytes < 1024 * 1024 * 1024 * 1024 * 1024:
-        return f"{size_bytes / (1024 * 1024 * 1024 * 1024):.2f} TB"
+        return f"{size_bytes / (1024 * 1024 * 1024 * 1024)::.2f} TB"
     else:
         return f"{size_bytes / (1024 * 1024 * 1024 * 1024 * 1024):.2f} PB"
 
 async def main():
     await client.start(phone=config.phone_number)
     
-    # Obtén la entidad del chat usando chat_id desde config.py
+    # Obtén la entidad del chat usando el chat_id desde config.py
     channel = await client.get_entity(config.chat_id)
     
     # Inicializa variables para el cálculo de tamaños
     total_characters = 0
     total_files_size_bytes = 0
     total_messages = 0
-
-    # Define la velocidad de las peticiones (en segundos)
-    speed = 2  # Retraso entre peticiones, ajustar según sea necesario
     
     # Obtén el historial de mensajes
     history = await client(GetHistoryRequest(
@@ -57,7 +54,7 @@ async def main():
         offset_id = 0
         
         while True:
-            history = await client(GetHistoryRequest(
+            history = await client.GetHistoryRequest(
                 peer=channel,
                 offset_id=offset_id,
                 offset_date=None,
@@ -66,7 +63,7 @@ async def main():
                 max_id=0,
                 min_id=0,
                 hash=0
-            ))
+            )
             
             if not history.messages:
                 break
@@ -93,7 +90,7 @@ async def main():
             offset_id = history.messages[-1].id
             
             # Retraso entre peticiones para evitar superar los límites
-            await asyncio.sleep(speed)
+            await asyncio.sleep(config.request_delay)
 
     # Imprime los resultados finales en un formato adecuado
     print(f'\nTotal characters: {total_characters:,}')
