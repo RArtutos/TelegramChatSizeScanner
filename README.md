@@ -25,7 +25,7 @@ TelegramChatSizeScanner es un bot de Telegram desarrollado en Python que escanea
    request_delay = .02  # Retraso entre peticiones en segundos
 
 ## Uso
-Ejecuta el archivo main.py
+   Ejecuta el archivo main.py
    python main.py
 
 ## Contribuciones
