@@ -26,13 +26,13 @@ TelegramChatSizeScanner es un bot de Telegram desarrollado en Python que escanea
 
 ## Uso
 Ejecuta el archivo main.py
-python main.py
+   python main.py
 
 ## Contribuciones
 ¡Las contribuciones son bienvenidas! Si tienes alguna mejora o corrección, por favor abre un issue o envía un pull request.
 
 
-MIT License
+##MIT License
 
 Copyright (c) 2024 RArtutos
 
