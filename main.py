@@ -19,7 +19,7 @@ def format_size(size_bytes):
     elif size_bytes < 1024 * 1024 * 1024 * 1024:
         return f"{size_bytes / (1024 * 1024 * 1024):.2f} GB"
     elif size_bytes < 1024 * 1024 * 1024 * 1024 * 1024:
-        return f"{size_bytes / (1024 * 1024 * 1024 * 1024)::.2f} TB"
+        return f"{size_bytes / (1024 * 1024 * 1024 * 1024):.2f} TB"
     else:
         return f"{size_bytes / (1024 * 1024 * 1024 * 1024 * 1024):.2f} PB"
 
@@ -54,7 +54,7 @@ async def main():
         offset_id = 0
         
         while True:
-            history = await client.GetHistoryRequest(
+            history = await client(GetHistoryRequest(
                 peer=channel,
                 offset_id=offset_id,
                 offset_date=None,
@@ -63,7 +63,7 @@ async def main():
                 max_id=0,
                 min_id=0,
                 hash=0
-            )
+            ))
             
             if not history.messages:
                 break
